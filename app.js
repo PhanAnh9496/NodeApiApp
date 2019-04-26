@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
-const expressValidator  = require('express-validator')
+const expressValidator = require('express-validator')
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
@@ -34,6 +34,13 @@ app.use(expressValidator());
 //use Routes
 app.use('/', postRoutes);
 app.use('/', authRoutes);
+
+//JWT
+app.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).json({error: "Unauthorized"});
+    }
+});
 
 const port = process.env.PORT || 8080;
 
