@@ -58,3 +58,16 @@ exports.updateUser = (req, res, next) => {
         res.json({user});
     });
 };
+
+
+exports.deleteUser = (req, res, next) => {
+    let user = req.profile;
+    user.remove((err, user) => {
+        if (err) {
+            return res.status(400).json({
+                error: err
+            });
+        }
+        res.json({ message: "Đã xóa User" });
+    });
+};

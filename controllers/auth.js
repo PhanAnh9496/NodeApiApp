@@ -32,7 +32,7 @@ exports.signin = (req, res) => {
     }, (err, user) => {
         if (err || !user) {
             return res.status(401).json({
-                error: "Email này chưa đăng kí tài khoản. Đăng nhập lại"
+                error: "Email này chưa đăng kí tài khoản. Mời bạn đăng kí!"
             });
         }
 
