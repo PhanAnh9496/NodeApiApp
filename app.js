@@ -24,6 +24,7 @@ mongoose.connection.on('error', (err) => {
 //Routes
 const postRoutes = require('./routes/post');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 //Middleware
 app.use(morgan("dev"));
@@ -34,6 +35,7 @@ app.use(expressValidator());
 //use Routes
 app.use('/', postRoutes);
 app.use('/', authRoutes);
+app.use('/', userRoutes);
 
 //JWT
 app.use(function (err, req, res, next) {
