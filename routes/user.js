@@ -9,7 +9,8 @@ const {
     addFollowing,
     addFollower,
     removeFollowing,
-    removeFollower
+    removeFollower,
+    findPeople
 } = require('../controllers/user');
 const {
     requireSignin
@@ -27,6 +28,9 @@ router.delete("/user/:userId", requireSignin, deleteUser);
 
 // photo
 router.get("/user/photo/:userId", userPhoto);
+
+//Xem người follow.
+router.get('/user/findpeople/:userId', requireSignin, findPeople)
 
 router.param('userId', userById);
 
