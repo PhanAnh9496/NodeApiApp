@@ -22,7 +22,8 @@ exports.postById = (req, res, next, id) => {
 exports.getPosts = (req, res) => {
     const post = Post.find()
         .populate("postedBy", "_id name")
-        .select("_id title body")
+        .select("_id title body created")
+        .sort({created: -1})
         .then((posts) => {
             res.status(200).json(posts)
         })
