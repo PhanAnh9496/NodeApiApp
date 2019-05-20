@@ -76,9 +76,7 @@ exports.postsByUser = (req, res) => {
                     error: err
                 });
             }
-            res.json({
-                posts
-            });
+            res.json(posts);
         });
 };
 
@@ -103,7 +101,7 @@ exports.updatePost = (req, res, next) => {
                 error: err
             })
         }
-        res.json({post});
+        res.json(post);
     });  
 };
 
