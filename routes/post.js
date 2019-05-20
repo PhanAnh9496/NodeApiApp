@@ -6,7 +6,9 @@ const {
     postById,
     isPoster,
     updatePost,
-    deletePost
+    deletePost,
+    photo,
+    singlePost
 } = require('../controllers/post');
 
 const {
@@ -24,10 +26,14 @@ const {
 const router = express.Router();
 
 router.get('/posts', getPosts);
+router.get("/post/:postId", singlePost);
 router.get('/posts/by/:userId', requireSignin, postsByUser);
 router.post('/post/new/:userId', requireSignin, createPost, createPostValidator);
 router.put('/post/:postId', requireSignin, isPoster, updatePost);
 router.delete('/post/:postId', requireSignin, isPoster, deletePost);
+
+//Image Post
+router.get("/post/photo/:postId", photo);
 
 router.param('userId', userById);
 
