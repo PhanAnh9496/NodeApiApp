@@ -10,7 +10,9 @@ const {
     photo,
     singlePost,
     like,
-    unlike
+    unlike,
+    comment,
+    uncomment
 } = require('../controllers/post');
 
 const {
@@ -32,6 +34,9 @@ router.get('/posts', getPosts);
 //Like Unlike
 router.put("/post/like", requireSignin, like);
 router.put("/post/unlike", requireSignin, unlike);
+// comments
+router.put("/post/comment", requireSignin, comment);
+router.put("/post/uncomment", requireSignin, uncomment)
 
 router.get("/post/:postId", singlePost);
 router.get('/posts/by/:userId', requireSignin, postsByUser);
